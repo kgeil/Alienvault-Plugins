@@ -5,6 +5,6 @@ The newasset plugin is configured to generate alarms in OSSIM or Alienvault upon
 
 Installation details are located within newasset.cfg, and newasset.sql
 Files were uploaded to Github during the writing of a SANS gold paper: 
-OSSIM: Auditing the CIS Critical Security Controls in a Windows Environment. 
+"OSSIM: CIS Critical Security Controls Assessment in a Windows Environment". 
 
 When the paper is finalized and hosted on the SANS site, a link will be provided; the paper's appendix contains very detailed installation instructions.
