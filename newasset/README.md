@@ -7,4 +7,5 @@ Installation details are located within newasset.cfg, and newasset.sql
 Files were uploaded to Github during the writing of a SANS gold paper: 
 "OSSIM: CIS Critical Security Controls Assessment in a Windows Environment". 
 
-When the paper is finalized and hosted on the SANS site, a link will be provided; the paper's appendix contains very detailed installation instructions.
+The link to the published paper is here:
+https://www.sans.org/reading-room/whitepapers/logging/paper/38045
