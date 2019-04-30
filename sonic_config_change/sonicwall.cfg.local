@@ -1,0 +1,44 @@
+# Alienvault plugin
+# Author: Alienvault Team at devel@alienvault.com
+# Plugin sonicwall id:1573 version: 0.0.7
+# Last modification: 2016-08-26 11:30
+#
+# Plugin Selection Info:
+# Dell:SonicWALL Scrutinizer:-
+#
+# END-HEADER
+# Accepted products:
+# dell - sonicwall_scrutinizer -
+# Description:
+# This plugin needs the m=message_id field in the log messages ir order to
+# successfully clasify them. Messages with no message_id will be reported as
+# generic sonicwall event
+#
+# This checks the Sonicwall logs
+#
+# Creator: Armando Machuca
+# Modified: ggrande and aarias
+#
+#
+
+[DEFAULT]
+plugin_id=1573
+tzone=UTC 
+
+[00001 - SonicWall - msg_id, note=<action> from X to Y]
+event_type=event
+precheck="Configuration changed:"
+regexp="(?:(?P<date_syslog>\w+\s+\d+\s\d+:\d+:\d+)\s(?P<device>\S*)\s*)?id=(?P<type>\S+)\s+sn=(?P<ssn>\S+)\s+time=\"(?P<date>\d{4}-\d{2}-\d{2}\s+\d{2}(?::|\s+)\d{2}(?::|\s+)\d{2}[^"]*)\"\s+fw=(?P<fw>\S+)\s+pri=(?P<priority>\d)\s+(?:(?!m=)\S+\s+)*m=(?P<msg_id>\d+)\s(?:src=(?P<src>[^:\s]*)|srcV6=\S*)\susr=\"(?P<user>\S+)\"\smsg=\"(?P<msg>Configuration changed:)\s(?P<obj>.*)by\suser\s\S+\"\s(?P<num>n=\d+)"
+date={normalize_date($date)}
+plugin_sid={$msg_id}
+device={$device}
+src_ip={$src}
+dst_ip={$device}
+username={$user}
+userdata1={$type}
+userdata2={$ssn}
+userdata3={$priority}
+userdata4={$msg}
+userdata5={$obj}
+userdata7={$num}
+userdata8={$fw}
