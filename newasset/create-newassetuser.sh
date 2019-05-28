@@ -2,6 +2,7 @@
 printf "\n This script will create a user in the OSSIM database with username 'hostchecker' \n"
 printf "and password: 'a_high_strength_password' \n"
 printf "if you would like to change these values,\nplease edit the script manually and re-run \n"
+printf "To edit this file and the newasset.cfg file a the same time, see the sed script in README.md \n"
 printf "My apologies for not turning this into a nice script that \n"
 printf "takes user input to adjust the username and password for \n"
 printf "the hostchecker account, but I'm really trying to get ready for my OSSIM \n"
