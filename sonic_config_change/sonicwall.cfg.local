@@ -1,5 +1,5 @@
 # Alienvault plugin
-# Author: Alienvault Team at devel@alienvault.com
+# Author: Kevin Geil info@friendandfamilytech.com
 # Plugin sonicwall id:1573 version: 0.0.7
 # Last modification: 2016-08-26 11:30
 #
@@ -25,7 +25,10 @@
 plugin_id=1573
 tzone=UTC 
 
-[00001 - SonicWall - msg_id, note=<action> from X to Y]
+# parsing for Sonicwall configuration change, m=1432, added in sonic version 6.5
+# Apr 11 14:07:09 10.10.16.1   id=firewall sn=c0FGF6CB25D7 time="2019-04-11 18:07:09 UTC" fw=93.184.216.34 pri=6 c=0 gcat=1 m=1432 src=10.10.0.72 usr="MYDOMAIN\kilgore" msg="Configuration changed: Address Object Zone by user MYDOMAIN\kilgore" n=709
+
+[00001 - SonicWall - msg_id, note=<action> from X to Y] 
 event_type=event
 precheck="Configuration changed:"
 regexp="(?:(?P<date_syslog>\w+\s+\d+\s\d+:\d+:\d+)\s(?P<device>\S*)\s*)?id=(?P<type>\S+)\s+sn=(?P<ssn>\S+)\s+time=\"(?P<date>\d{4}-\d{2}-\d{2}\s+\d{2}(?::|\s+)\d{2}(?::|\s+)\d{2}[^"]*)\"\s+fw=(?P<fw>\S+)\s+pri=(?P<priority>\d)\s+(?:(?!m=)\S+\s+)*m=(?P<msg_id>\d+)\s(?:src=(?P<src>[^:\s]*)|srcV6=\S*)\susr=\"(?P<user>\S+)\"\smsg=\"(?P<msg>Configuration changed:)\s(?P<obj>.*)by\suser\s\S+\"\s(?P<num>n=\d+)"
